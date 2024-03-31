@@ -1,6 +1,6 @@
 # viperz_carhudnew
 
-## NEW CARHUD | discord.gg/viperz
+## DISCORD.GG/VIPERZ
 
 - Gear
 - Fuel
