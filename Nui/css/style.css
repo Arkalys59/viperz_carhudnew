@@ -1,0 +1,128 @@
+@font-face {
+    font-family: --v;
+    src: url(/Nui/fonts/BoxedMedium.ttf);
+}
+
+:root {
+    --hud-bg-color: rgba(0, 0, 0, 0.5);
+    --hud-text-color: white;
+    --hud-text-shadow: 0 0 10px black;
+    --hud-box-shadow: 0 0 10px rgba(0, 0, 0, 0.438);
+}
+
+#carhud-container {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 10px black;
+    border-radius: 7px;
+    padding: 10px;
+    width: 210px;
+    height: 100px;
+}
+
+@keyframes abre {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#speed {
+    align-self: flex-start;
+    margin-top: -40px;
+    margin-left: 20px; 
+    width: fit-content;
+    font-size: 3em;
+    font-family: --v;
+    color: var(--hud-text-color);
+    text-shadow: var(--hud-text-shadow);
+}
+
+#gear, #fuel, #health {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--hud-bg-color);
+    border-radius: 7px;
+    padding: 5px;
+    font-family: --v;
+    font-size: 0.5em;
+    color: var(--hud-text-color);
+    text-shadow: var(--hud-text-shadow);
+    box-shadow: var(--hud-box-shadow);
+}
+
+#gear {
+    bottom: 30px; 
+    right: 1035px;
+    width: 20px; 
+    height: 20px;
+    font-size: 0.8em;
+}
+
+#fuel {
+    bottom: 60px; 
+    right: 850px;
+    width: 50px;
+    height: 20px;
+}
+
+#fuel .percentage, #fuel .fas, #health .percentage, #health .fas {
+    font-size: 1.5em; 
+    color: var(--hud-text-color);
+    text-shadow: var(--hud-text-shadow);
+    margin-left: 5px;
+}
+
+#fuel .fuel-green, #health .health-green {
+    color: green;
+}
+
+#fuel .fuel-orange, #health .health-orange {
+    color: orange;
+}
+
+#fuel .fuel-red, #health .health-red {
+    color: red;
+}
+
+#health {
+    bottom: 93px; 
+    right: 850px;
+    width: 50px;
+    height: 20px;
+}
+
+#progress-speed {
+    position: fixed;
+    bottom: 35px; 
+    right: 880px; 
+    background-color: var(--hud-bg-color); 
+    border-radius: 10px;
+    height: 20px;
+    width: 140px;
+    overflow: hidden;
+}
+
+#progress-speed::before {
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    border-radius: 10px;
+    background-color: var(--progress-color, green);
+    transition: width 0.3s ease-in-out; 
+    width: var(--progress-width, 0);
+}
