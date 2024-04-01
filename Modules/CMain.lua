@@ -3,9 +3,13 @@ local vehGear = 0
 local vehFuel = 0 
 local vehHealth = 0 
 
-local function getGearDisplay(vehGear, vehSpeed)
+local function getGearDisplay(vehGear, vehSpeed, veh)
     if vehGear == 0 and vehSpeed > 0 then
-        return "R"
+        if IsThisModelAHeli(GetEntityModel(veh)) then
+            return "H" 
+        else
+            return "R"
+        end
     elseif vehSpeed == 0 then
         return "N"
     else
@@ -14,13 +18,17 @@ local function getGearDisplay(vehGear, vehSpeed)
 end
 
 Citizen.CreateThread(function()
-    local waitTimeInVehicle = 100 
-    local waitTimeOutOfVehicle = 1000 
+    local waitTimeInVehicle = 100
+    local waitTimeOutOfVehicle = 1000
     local msec = waitTimeOutOfVehicle
 
     while true do
-        local ped = GetPlayerPed(-1)
+        local ped = PlayerPedId()
         local veh = GetVehiclePedIsIn(ped, false)
+        local vehSpeed = 0
+        local vehGear = 0
+        local vehFuel = 0
+        local vehHealth = 0
 
         if veh ~= 0 then
             msec = waitTimeInVehicle
@@ -31,7 +39,7 @@ Citizen.CreateThread(function()
             local engineHealth = GetVehicleEngineHealth(veh)
             vehHealth = math.max(0, (engineHealth / 1000) * 100) 
 
-            local gearDisplay = getGearDisplay(vehGear, vehSpeed)
+            local gearDisplay = getGearDisplay(vehGear, vehSpeed, veh)
 
             SendNUIMessage({
                 speed = math.ceil(vehSpeed),
