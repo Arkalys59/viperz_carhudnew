@@ -4,6 +4,7 @@ game 'gta5'
 author 'mano.6195'
 description 'Carhud V2 - discord.gg/viperz'
 lua54 'yes'
+discord 'https://discord.gg/viperz'
 
 client_scripts {
     'Modules/*.lua'
